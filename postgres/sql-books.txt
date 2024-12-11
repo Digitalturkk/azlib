@@ -1,0 +1,83 @@
+ALTER TABLE books ALTER COLUMN description TYPE TEXT;
+
+--1
+insert into books (id, title, author, genre, language, description, img, url)
+values(1,'Ali and Nino','Kurban Said', 'Romance', 'Eng','It is the eve of World War I in Baku, Azerbaijan, a city on the edge of the Caspian Sea, poised precariously between east and west. Ali Khan Shirvanshir, a Muslim schoolboy from a proud, aristocratic family, has fallen in love with the beautiful and enigmatic Nino Kipiani, a Christian girl with distinctly European sensibilities. To be together they must overcome blood feud and scandal, attempt a daring horseback rescue, and travel from the bustling street of oil-boom Baku, through starkly beautiful deserts and remote mountain villages, to the opulent palace of Alis uncle in neighboring Persia. Ultimately the lovers are drawn back to Baku, but when war threatens their future, Ali is forced to choose between his loyalty to the beliefs of his Asian ancestors and his profound devotion to Nino. Combining the exotic fascination of a tale told by Scheherazade with the range and magnificence of an epic, Ali and Nino is a timeless classic of love in the face of war.','alinino.jpg','https://alinino.az/product/ali-and-nino');
+
+--2
+insert into books (id, title, author, genre, language, description, img, url)
+values(2,'Преступление и наказание','Федор Достоевский','Romance', 'Rus','«Преступление и наказание» (1866) — одно из самых значительных произведений в истории мировой литературы. Это и глубокий философский роман, и тонкая психологическая драма, и захватывающий детектив, и величественная картина мрачного города, в недрах которого герои грешат и ищут прощения, жертвуют собой и отрекаются от себя ради ближних и находят успокоение в смирении, покаянии, вере. Главный герой романа Родион Раскольников решается на убийство, чтобы доказать себе и миру, что он не «тварь дрожащая», а «право имеет». Главным предметом исследования писателя становится процесс превращения добропорядочного, умного и доброго юноши в убийцу, а также то, как совершивший преступление Раскольников может искупить свою вину.','nakazaniye.jpg','https://alinino.az/product/prestuplenie-i-nakazanie-934cd2');
+
+--3
+insert into books (id, title, author, genre, language, description, img, url)
+values(3,'Leyli və Məcnun','Nizami Gəncəvi', 'Poem', 'Aze','“Xəmsə”nin üçüncü poeması olan “Leyli və Məcnun” dünya ədəbiyyatının yüksək, müqəddəs və böyük bir məhəbbəti tərənnüm edən ölməz əsərlərindəndir. Nizami “Leyli və Məcnun” dastanını 1188-ci ildə qələmə alıb. Bu kitab öz dolğunluğu, orijinallığı və bədii keyfiyyətləri ilə diqqət çəkir.','leylimecnun.png','https://alinino.az/product/leyli-ve-mecnun-3');
+
+--4
+insert into books (id, title, author, genre, language, description, img, url)
+values(4,'Java для опытных разработчиков','Мартин Фербург', 'Programming', 'Rus', 'Язык Java – сердце корпоративного ПО. Если программист хорошо знает Java, он без особого труда найдет интересную работу. Поднимите ваши навыки Java на новый уровень вместе с экспертами.','java.png','https://alinino.az/product/java-dlya-opytnyh-razrabotchikov');
+
+--5
+insert into books (id, title, author, genre, language, description, img, url)
+values(5,'Татарская пустыня','Дино Буццати', 'Romance', 'Rus', '"Татарская пустыня" - шедевр притчевой прозы, оказавший значительное влияние на последующую модернистскую литературу, - своеобразное житие молодого офицера, который всю жизнь провел на далеком форпосте на краю пустыни в ожидании нападения таинственных варварских орд, по смутным слухам живущих по ту ее сторону.','tatar.jpg','https://alinino.az/product/tatarskaya-pustynya');
+
+--6
+insert into books (id, title, author, genre, language, description, img, url)
+values(6,'Мартин Иден','Джек Лондон', 'Romance', 'Rus','МАРТИН ИДЕН - самый известный роман Джека Лондона, впервые напечатанный в 1908-1909 гг. Во многом автобиографическая книга о человеке, который "сделал себя сам", выбравшись из самых низов, добился признания.','martineden.jpg','https://alinino.az/product/martin-iden-491dee');
+
+--7
+insert into books (id, title, author, genre, language, description, img, url)
+values(7,'Atatürk - Bir Milletin Yeniden Doğuşu','Lord Kinross','History','Turk','Atatürk - Bir Milletin Yeniden Doğuşu/Bu kitap çağdaş Türkiyeyi yaratan ve tarihin akışını değiştiren büyük önder hakkındaki birçok bilgi eksiğini giderecek bir araştırma ürünüdür','ataturk.jpg','https://alinino.az/product/ataturk-bir-milletin-yeniden-dogusu');
+
+--8
+insert into books (id, title, author, genre, language, description, img, url)
+values(8,'Dəli Kür','İsmayıl Şıxlı','Romance','Aze','Dəli Kür- böyük Azərbaycan yazıçısı İsmayıl Şıxlının geniş oxucu kütləsinin rəğbətini qazanmış və XIX əsrdə baş verən mürəkkəb tarixi proseslərin Azərbaycan xalqının həyatında əmələ gətirdiyi əsaslı dəyişiklikləri realistcəsinə göstərən bir əsərdir. ilmayil sixli deli kur','delikur.jpg','https://alinino.az/product/deli-kur-2');
+
+--9
+insert into books (id, title, author, genre, language, description, img, url)
+values(9,'Белые ночи','Федор Достоевский','Romance','Rus','В этот сборник вошли две ранние повести Достоевского - "Белые ночи" и "Неточка Незванова", которые считаются самыми поэтичными произведениями великого романиста.','whitenights.jpg','https://alinino.az/product/belye-nochi');
+
+--10
+insert into books (id, title, author, genre, language, description, img, url)
+values(10,'Игрок','Федор Достоевский','Romance','Rus','Роману "Игрок" присущи сильные автобиографические мотивы, ведь азартным игроком был сам Достоевский.','player.jpg','https://alinino.az/product/igrok-2');
+
+--11
+insert into books (id, title, author, genre, language, description, img, url)
+values(11,'Карабах','Талех Гейдаров','History','Rus','Карабах. История в контексте конфликта/В книге исследуется история Карабахского региона Азербайджана и армяно-азербайджанского Нагорно-Карабахского конфликта.','karabakh.jpg','https://alinino.az/product/karabah-istoriya-v-kontekste-konflikta-2');
+
+--12
+insert into books (id, title, author, genre, language, description, img, url)
+values(12,'Python. Экспресс-курс','Наоми Седер','Programming','Rus','Вы уже умеете кодить на одном или нескольких языках программирования? Тогда настала пора пройти экспресс-курс Python. Впервые на русском языке выходит новое издание одной из самых популярных книг издательства Manning.','pythonexpress.jpg','https://alinino.az/product/python-ekspress-kurs');
+
+--13
+insert into books (id, title, author, genre, language, description, img, url)
+values(13,'Məhəmməd Əmin Rəsulzadə. ƏSƏRLƏRİ, 2-ci cild','Məhəmməd Əmin Rəsulzadə','History','Aze','Oxuculara təqdim olunan bu kitabda M.Ə.Rəsulzadənin 1923- 1931-ci illərdə Türkiyədə nəşr edilmiş “Yeni Qafqasiya”, “Azəri Türk”, “Odlu Yurd” jurnallarındakı və “Bildiriş” qəzetindəki yazıları toplanılıb. memmed mehemmed emin resulzade eserleri muhaciret dovru','resulzade.png','https://alinino.az/product/mehemmed-emin-resulzade-eserleri-muhaciret-dovru-2-ci-cild');
+
+--14
+insert into books (id, title, author, genre, language, description, img, url)
+values(14,'В поисках кота Шредингера','Джон Гриббин','Science','Rus','Квантовая теория - один из самых сложных разделов физики. Джон Гриббин, известный британский ученый, писатель, популяризатор науки, в увлекательной и доступной форме объясняет законы квантовой механики, показывает историю ее развития, парадоксы и загадки. Книга предназначена для широкого круга читателей, интересующихся современной наукой.','kot.jpg','https://alinino.az/product/v-poiskah-kota-shredingera');
+
+--15
+insert into books (id, title, author, genre, language, description, img, url)
+values(15,'Kuran-ı Kerim Meali','Yaşar Nuri Öztürk','Religion','Turk','Tüm övgüler o Allaha ki, Kuranı insanlık dünyasına indirdi. Salat ve selam olsun o Peygambere ki, Kuranı insanlığa tebliğ edip bildirdi.','kuran.jpg','https://alinino.az/product/kuran-i-kerim-meali-buyuk-metinli-yesil');
+
+--16
+insert into books (id, title, author, genre, language, description, img, url)
+values(16,'Naruto','Masashi Kishimoto','Manga','Turk','Naruto, ünlü mangaka Masaşi Kişimoto tarafından yaratılan, 1999 yılından beri Japonya’da yayınlanan dünyaca ünlü manga serisi artık Türkiye’de.','naruto.jpg','https://alinino.az/product/naruto-1');
+
+--17
+insert into books (id, title, author, genre, language, description, img, url)
+values(17,'Yavuz Sultan Selim','Feridun M. Emecen','History','Turk','Kimdir Yavuz Sultan Selim? Kimine göre atının üzerinde peygamberin izini süren bir veli, kimine göre hasımlarını savaş meydanında perişan eden askerî bir deha, kimine göreyse zalim bir sultan... Tarih sahnesinden pek çok hükümdar geçmiştir, fakat çok azı Yavuz Sultan Selim kadar tartışılmıştır. İlginç kişiliği ve kısa vadede kazandığı olağanüstü başarılarıyla I. Selimin Osmanlı tarihinin en sıra dışı karakterlerinden biri olduğu kesindir.','yavuzsultun.jpg','https://alinino.az/product/yavuz-sultan-selim-2');
+
+--18
+insert into books (id, title, author, genre, language, description, img, url)
+values(18,'The Islam Book','DK','Religion','Eng','This essential guide to Islam covers every aspect of the Muslim faith and its history - from the life of the Prophet Muhammad and the teachings of the Koran to Islam in the 21st century. Celebrating the scientific, literary, and artistic achievements of the Islamic Golden Age and the ideas of philosophers and theologians across the centuries, it opens a window on the Islamic world.','islam.jpg','https://alinino.az/product/the-islam-book');
+
+--19
+insert into books (id, title, author, genre, language, description, img, url)
+values(19,'Emma','Ceyn Ostin','Romance','Aze','Emma, bu adaxlılardan bəzilərinin onun özü ilə maraqlandığını və özlərini bu qızların tayı saymadıqlarını güman belə etmir. Ən yaxşı dostu cənab Naytli onu dəfələrlə xəbərdar edir, amma xanım kiməsə qulaq asmağa adət etməyib. Emma heç nəyə baxmadan Harriet Smitin şəxsi həyatını qurmaq cəhdlərinə davam edir. Amma bu dəfə onun planları alt-üst olmağa məhkumdur və qız axmaq vəziyyətə düşür. Ceyn Ostin Ceyn Oustin','emma.png','https://alinino.az/product/emma-af1d86');
+
+--20
+insert into books (id, title, author, genre, language, description, img, url)
+values(20,'Haliçdən olan qız','Kurban Said','Romance','Aze','Məşhur “Əli və Nino” romanının müəllifi kimi tanıdığımız Qurban Səidin ilk dəfə 1938-ci ildə Vyanada nəşr olunmuş “Haliçdən olan qız” əsəri yazıçının ustalığı və mətnin bədii siqləti cəhətdən diqqəti çəkir. halicden olan qız','goldenhorn.png','https://alinino.az/product/halicden-olan-qiz');
+
+select * from books;
