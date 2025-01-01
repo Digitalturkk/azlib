@@ -1,23 +1,33 @@
 package project.lib_app.Controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import project.lib_app.DTO.BooksResponse;
 import project.lib_app.Models.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import project.lib_app.Services.BooksService;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("public/books/")
+@CrossOrigin("http://localhost:3000/")
 public class GetBooksControllers {
 
     @Autowired
     private BooksService booksService;
 
     @GetMapping("/get-all-books")
-    public List<Books> getAllBooks(@RequestParam(name = "page") Integer page,
-                                   @RequestParam(name = "size") Integer size) {
-        return booksService.getAllBooks(page,size);
+    public ResponseEntity<BooksResponse> getAllBooks(@RequestParam(name = "page") Integer page,
+                                                     @RequestParam(name = "size") Integer size) {
+        BooksResponse booksResponse = booksService.getAllBooks(page, size);
+        return ResponseEntity.ok(booksResponse);
+    };
+
+    @GetMapping("/get-books-by-title")
+    public ResponseEntity<BooksResponse> getAllBooks(@RequestParam("title") String title,
+                                                     @RequestParam(name = "page") Integer page,
+                                                     @RequestParam(name = "size") Integer size) {
+        BooksResponse booksResponse = booksService.findByTitleContaining(title, page, size);
+        return ResponseEntity.ok(booksResponse);
     };
 
     @GetMapping("/get-book-by-id={id}")
