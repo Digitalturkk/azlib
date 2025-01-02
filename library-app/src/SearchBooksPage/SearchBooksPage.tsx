@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {BookModel} from "../models/BookModel";
 import { SearchBook } from "./components/SearchBook";
 import { Pagination } from "../Utils/Pagination";
+import { title } from "process";
 
 export const SearchBooksPage = () => {
     const [books, setBooks] = useState<BookModel[]>([]);
@@ -11,13 +12,21 @@ export const SearchBooksPage = () => {
     const [booksPerPage, setBooksPerPage] = useState(5);
     const [totalBooks, setTotalBooks] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const [search, setSearch] = useState("");
+    const [searchUrl, setSearchUrl] = useState("");
 
     useEffect(() : void => {
 
         const fetchBooks = async () => {
-            const baseUrl: string = "http://localhost:4000/public/books/get-all-books";
+            const baseUrl: string = "http://localhost:4000/public/books";
 
-            let url: string = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
+            let url: string = '';
+
+            if (searchUrl === "") {
+                url = `${baseUrl}/get-all-books?page=${currentPage - 1}&size=${booksPerPage}`;
+            } else {
+                url = baseUrl + searchUrl;
+            }
 
             try {
                 const response = await fetch(url);
@@ -50,7 +59,10 @@ export const SearchBooksPage = () => {
                 setBooks(loadedBooks);
                 console.log("Loaded books:", loadedBooks);
                 setIsLoading(false);
-            } catch (error: any) {
+
+            } 
+            
+            catch (error: any) {
                 setIsLoading(false);
                 setHttpError(error.message);
             }
@@ -60,7 +72,7 @@ export const SearchBooksPage = () => {
 
         window.scrollTo(0, 0);
 
-    }, [currentPage, booksPerPage]);
+    }, [currentPage, booksPerPage, searchUrl]);
 
     if (httpError) {
         return (
@@ -70,9 +82,13 @@ export const SearchBooksPage = () => {
         );
     }
 
-    const indexOfLastBook = currentPage * booksPerPage;
-    const indexOfFirstBook = indexOfLastBook - booksPerPage;
-    let lastItem = booksPerPage * currentPage <= totalBooks ? booksPerPage * currentPage : totalBooks;
+   const searchHandler = () => {
+        if (search === "") {
+            setSearchUrl("");
+        } else {
+            setSearchUrl(`/get-books-by-title?title=${search}&page=0&size=${booksPerPage}`);
+        }
+    }
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -82,11 +98,15 @@ export const SearchBooksPage = () => {
                 <div className="m-[1%] flex ">
                     <div className="w-full h-11 align-middle flex justify-center items-center">
                         <label className="text-white bg-indigo-700 text-xl text-center m-[2%] p-2 rounded-3xl h-full font-mono w-1/5">AzLib</label>
-                        <input type="text" placeholder="Search for books" className="w-3/5 h-full rounded-2xl p-[1%] text-lg text-indigo-700 placeholder-indigo-400   focus: ring-slate-900" />
-                        <button className="bg-indigo-700 w-1/5 h-full text-white font-mono text-lg font-bold ">Find</button>
+                        <input  onKeyDown={e => e.key === 'Enter' ? searchHandler() : false} type="text" placeholder="Search for books" onChange={e => setSearch(e.target.value)} 
+                        className="w-3/5 h-full rounded-2xl p-[1%] text-lg text-indigo-700 placeholder-indigo-400   focus: ring-slate-900" />
+                        <button onClick={() => searchHandler()} type="submit" 
+                        className="bg-indigo-700 w-1/5 h-full text-white font-mono text-lg font-bold ">Find</button>
                     </div>
                 </div>
             </div>
+            {totalBooks > 0 ?
+            <>
             <div className="m-[2%]">
                     {isLoading && <p>Loading...</p>}
                     {books.map(book => (
@@ -100,6 +120,17 @@ export const SearchBooksPage = () => {
                         />
                     )}
             </div>
+            </>
+            :
+            <div className="flex items-center justify-center">
+                <img src={require("../img/error/nobooks.jpeg")} alt="No Books Found" 
+                className=" w-1/2"/>
+                <div className="">
+                    <p className="text-left text-5xl font-bold text-indigo-500 w-1/2">No books found!</p>
+                    <button onClick={() => setSearchUrl("")} className="text-left text-3xl bg-indigo-700 rounded-xl text-white p-[2%] font-bold shadow-2xl hover:bg-indigo-800 focus:bg-slate-700">Back to Search</button>
+                </div>
+            </div>
+            }
         </div>
     );
 }

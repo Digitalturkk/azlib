@@ -9,7 +9,7 @@ import project.lib_app.Services.BooksService;
 
 @RestController
 @RequestMapping("public/books/")
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class GetBooksControllers {
 
     @Autowired
