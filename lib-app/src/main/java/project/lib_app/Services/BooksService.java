@@ -11,4 +11,5 @@ public interface BooksService {
     void deleteBook(Long id);
 
     BooksResponse findByTitleContaining(String title, Integer page, Integer size);
+    BooksResponse findByLanguage(String language, Integer page, Integer size);
 }

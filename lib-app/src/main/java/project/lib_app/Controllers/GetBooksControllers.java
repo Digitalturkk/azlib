@@ -17,16 +17,24 @@ public class GetBooksControllers {
 
     @GetMapping("/get-all-books")
     public ResponseEntity<BooksResponse> getAllBooks(@RequestParam(name = "page") Integer page,
-                                                     @RequestParam(name = "size") Integer size) {
+                                                       @RequestParam(name = "size") Integer size) {
         BooksResponse booksResponse = booksService.getAllBooks(page, size);
         return ResponseEntity.ok(booksResponse);
     };
 
     @GetMapping("/get-books-by-title")
-    public ResponseEntity<BooksResponse> getAllBooks(@RequestParam("title") String title,
+    public ResponseEntity<BooksResponse> getByTitle(@RequestParam("title") String title,
                                                      @RequestParam(name = "page") Integer page,
                                                      @RequestParam(name = "size") Integer size) {
         BooksResponse booksResponse = booksService.findByTitleContaining(title, page, size);
+        return ResponseEntity.ok(booksResponse);
+    };
+
+    @GetMapping("/get-books-by-language")
+    public ResponseEntity<BooksResponse> getByLanguage(@RequestParam("language") String language,
+                                                       @RequestParam(name = "page") Integer page,
+                                                       @RequestParam(name = "size") Integer size) {
+        BooksResponse booksResponse = booksService.findByLanguage(language, page, size);
         return ResponseEntity.ok(booksResponse);
     };
 

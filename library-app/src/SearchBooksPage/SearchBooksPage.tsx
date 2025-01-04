@@ -1,8 +1,8 @@
-import {useState, useEffect} from "react";
-import {BookModel} from "../models/BookModel";
+import { useState, useEffect } from "react";
+import { BookModel } from "../models/BookModel";
 import { SearchBook } from "./components/SearchBook";
 import { Pagination } from "../Utils/Pagination";
-import { title } from "process";
+
 
 export const SearchBooksPage = () => {
     const [books, setBooks] = useState<BookModel[]>([]);
@@ -14,8 +14,10 @@ export const SearchBooksPage = () => {
     const [totalPages, setTotalPages] = useState(0);
     const [search, setSearch] = useState("");
     const [searchUrl, setSearchUrl] = useState("");
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [language, setLanguage] = useState("All");
 
-    useEffect(() : void => {
+    useEffect((): void => {
 
         const fetchBooks = async () => {
             const baseUrl: string = "http://localhost:4000/public/books";
@@ -60,8 +62,8 @@ export const SearchBooksPage = () => {
                 console.log("Loaded books:", loadedBooks);
                 setIsLoading(false);
 
-            } 
-            
+            }
+
             catch (error: any) {
                 setIsLoading(false);
                 setHttpError(error.message);
@@ -82,11 +84,21 @@ export const SearchBooksPage = () => {
         );
     }
 
-   const searchHandler = () => {
+    const searchHandler = () => {
         if (search === "") {
             setSearchUrl("");
         } else {
             setSearchUrl(`/get-books-by-title?title=${search}&page=0&size=${booksPerPage}`);
+        }
+    }
+
+    const languageField = (value: string) => {
+        if (value === "Rus" || value === "Eng" || value === "Aze" || value === "Turk") {
+            setLanguage(value);
+            setSearchUrl(`/get-books-by-language?language=${value}&page=0&size=${booksPerPage}`);
+        } else {
+            setLanguage("All");
+            setSearchUrl("");
         }
     }
 
@@ -98,38 +110,77 @@ export const SearchBooksPage = () => {
                 <div className="m-[1%] flex ">
                     <div className="w-full h-11 align-middle flex justify-center items-center">
                         <label className="text-white bg-indigo-700 text-xl text-center m-[2%] p-2 rounded-3xl h-full font-mono w-1/5">AzLib</label>
-                        <input  onKeyDown={e => e.key === 'Enter' ? searchHandler() : false} type="text" placeholder="Search for books" onChange={e => setSearch(e.target.value)} 
-                        className="w-3/5 h-full rounded-2xl p-[1%] text-lg text-indigo-700 placeholder-indigo-400   focus: ring-slate-900" />
-                        <button onClick={() => searchHandler()} type="submit" 
-                        className="bg-indigo-700 w-1/5 h-full text-white font-mono text-lg font-bold ">Find</button>
+                        <input onKeyDown={e => e.key === 'Enter' ? searchHandler() : false} type="text" placeholder="Search for books" onChange={e => setSearch(e.target.value)}
+                            className="w-2/5 h-full rounded-2xl p-[1%] text-lg text-indigo-700 placeholder-indigo-400   focus: ring-slate-900" />
+                        <button onClick={() => searchHandler()} type="submit"
+                            className="bg-indigo-600 hover:bg-indigo-800 w-[10%] h-full text-white font-mono text-lg font-bold rounded-2xl m-[2%]">Find</button>
+
+                        <div className="h-11 align-middle  w-1/5">
+                            <button
+                                id="dropdownDefaultButton"
+                                onClick={() => setShowDropdown(!showDropdown)}
+                                className="bg-indigo-600 hover:bg-indigo-800 w-[60%] h-full text-white font-mono text-lg font-bold rounded-2xl"
+                            >
+                                Language: {language}
+                            </button>
+                            {showDropdown && (
+                                <ul className="absolute py-2 text-sm bg-indigo-600 text-white rounded-lg shadow mt-1">
+                                    <li onClick={() => languageField("All")}>
+                                        <a className="block px-4 py-2 hover:bg-indigo-700 text-center w-[150px]">
+                                            All
+                                        </a>
+                                    </li>
+                                    <li onClick={() => languageField("Rus")}>
+                                        <a className="block px-4 py-2 hover:bg-indigo-700 text-center w-[150px]">
+                                            Rus
+                                        </a>
+                                    </li>
+                                    <li onClick={() => languageField("Eng")}>
+                                        <a className="block px-4 py-2 hover:bg-indigo-700 text-center w-[150px]">
+                                            Eng
+                                        </a>
+                                    </li>
+                                    <li onClick={() => languageField("Aze")}>
+                                        <a className="block px-4 py-2 hover:bg-indigo-700 text-center w-[150px]">
+                                            Aze
+                                        </a>
+                                    </li>
+                                    <li onClick={() => languageField("Turk")}>
+                                        <a className="block px-4 py-2 hover:bg-indigo-700 text-center w-[150px]">
+                                            Turk
+                                        </a>
+                                    </li>
+                                </ul>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
             {totalBooks > 0 ?
-            <>
-            <div className="m-[2%]">
-                    {isLoading && <p>Loading...</p>}
-                    {books.map(book => (
-                                <SearchBook book={book} key={book.id} />
-                            ))}
-                    {totalPages > 1 && (
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={totalPages}
-                            paginate={paginate}
-                        />
-                    )}
-            </div>
-            </>
-            :
-            <div className="flex items-center justify-center">
-                <img src={require("../img/error/nobooks.jpeg")} alt="No Books Found" 
-                className=" w-1/2"/>
-                <div className="">
-                    <p className="text-left text-5xl font-bold text-indigo-500 w-1/2">No books found!</p>
-                    <button onClick={() => setSearchUrl("")} className="text-left text-3xl bg-indigo-700 rounded-xl text-white p-[2%] font-bold shadow-2xl hover:bg-indigo-800 focus:bg-slate-700">Back to Search</button>
+                <>
+                    <div className="m-[2%]">
+                        {isLoading && <p>Loading...</p>}
+                        {books.map(book => (
+                            <SearchBook book={book} key={book.id} />
+                        ))}
+                        {totalPages > 1 && (
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                paginate={paginate}
+                            />
+                        )}
+                    </div>
+                </>
+                :
+                <div className="flex items-center justify-center">
+                    <img src={require("../img/error/nobooks.jpeg")} alt="No Books Found"
+                        className=" w-1/2" />
+                    <div className="">
+                        <p className="text-left text-5xl font-bold text-indigo-500 w-1/2">No books found!</p>
+                        <button onClick={() => setSearchUrl("")} className="text-left text-3xl bg-indigo-700 rounded-xl text-white p-[2%] font-bold shadow-2xl hover:bg-indigo-800 focus:bg-slate-700">Back to Search</button>
+                    </div>
                 </div>
-            </div>
             }
         </div>
     );

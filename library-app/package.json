@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-tailwind/react": "^2.1.10",
     "cra-template-typescript": "1.2.0",
     "library-app": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "sweetalert2": "^11.14.5"
   },
@@ -34,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.3"
   }
 }

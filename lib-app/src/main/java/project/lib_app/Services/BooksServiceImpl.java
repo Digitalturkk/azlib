@@ -67,4 +67,17 @@ public class BooksServiceImpl implements BooksService {
 
         return new BooksResponse(booksDTO, booksPage.getNumber(), booksPage.getSize(), booksPage.getTotalPages(), booksPage.getTotalElements(), booksPage.isLast(), booksPage.isFirst());
     }
+
+    @Override
+    public BooksResponse findByLanguage(String language, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Books> booksPage = booksRepo.findByLanguage(language, pageable);
+        List<Books> booksContent = booksPage.getContent();
+
+        List<BooksDTO> booksDTO = booksContent.stream()
+                .map(book -> modelMapper.map(book, BooksDTO.class))
+                .toList();
+
+        return new BooksResponse(booksDTO, booksPage.getNumber(), booksPage.getSize(), booksPage.getTotalPages(), booksPage.getTotalElements(), booksPage.isLast(), booksPage.isFirst());
+    }
 }

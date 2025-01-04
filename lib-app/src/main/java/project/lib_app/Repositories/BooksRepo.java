@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BooksRepo extends JpaRepository<Books, Long> {
     Page<Books> findByTitleContaining(@RequestParam("title") String title, Pageable pageable);
+    Page<Books> findByLanguage(@RequestParam("language") String language, Pageable pageable);
 }
