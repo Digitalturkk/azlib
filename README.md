@@ -9,7 +9,58 @@
   *postgres -> sql queries*
 
 # The Idea:
-I created a full-stac web aplication that connects all liblaries in Azerbaijan
+# AzLib 📚
+
+**AzLib** is a modern, full-stack multilingual library web application built with **React** for the frontend and **Spring Boot** for the backend.
+
+## 🚀 Features
+
+- 📚 Browse and search for books
+- 🌐 Multilingual support (Azerbaijani, English)
+- 🔐 User authentication using JWT (Login/Register)
+- 🧑‍💼 Admin panel to manage books
+- 📈 View newest and popular books
+- 🖼️ Book cover upload & display
+- ⚙️ RESTful API integration
+- 🎨 Clean and responsive UI (Tailwind CSS)
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend (React)
+- React + Vite
+- React Router
+- Axios
+- Tailwind CSS
+- i18next (internationalization)
+
+### Backend (Spring Boot)
+- Spring Boot 3
+- Spring Data JPA
+- PostgreSQL
+- Spring Security
+- JWT Authentication
+- ModelMapper
+
+---
+
+## 📦 Installation
+```
+azlib/
+├── backend/       # Spring Boot backend
+│   ├── controller/
+│   ├── service/
+│   ├── model/
+│   └── repository/
+├── frontend/      # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── i18n/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+```
 
 Technologies that i have used:
 =
