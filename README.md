@@ -8,6 +8,8 @@
   
   *postgres -> sql queries*
 
+# The Idea:
+I created a full-stac web aplication that connects all liblaries in Azerbaijan
 
 Technologies that i have used:
 =
