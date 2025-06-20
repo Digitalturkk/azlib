@@ -48,12 +48,12 @@
 ## 📦 Installation
 ```
 azlib/
-├── backend/       # Spring Boot backend
+├── lib-app/       # Spring Boot backend
 │   ├── controller/
 │   ├── service/
 │   ├── model/
 │   └── repository/
-├── frontend/      # React frontend
+├── library-app/      # React frontend
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
