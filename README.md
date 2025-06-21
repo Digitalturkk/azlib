@@ -29,7 +29,7 @@
 ## 🧰 Tech Stack
 
 ### Frontend (React)
-- React + Vite
+- React
 - React Router
 - Axios
 - Tailwind CSS
